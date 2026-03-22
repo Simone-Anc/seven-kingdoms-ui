@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0d0703;
+  color: #e8d9b0;
+  font-family: 'Crimson Text', serif;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.error-toast {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(231,76,60,0.95);
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  z-index: 1000;
+  font-family: 'Crimson Text', serif;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Reopen game over button */
+.reopen-gameover-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 500;
+  background: rgba(201,162,39,0.15);
+  border: 1px solid rgba(201,162,39,0.4);
+  border-radius: 4px;
+  color: #c9a227;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reopen-gameover-btn:hover {
+  background: rgba(201,162,39,0.3);
+  box-shadow: 0 0 15px rgba(201,162,39,0.2);
+}
+
+/* Codice partita */
+.game-code-badge {
+  position: fixed;
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(201,162,39,0.1);
+  border: 1px solid rgba(201,162,39,0.25);
+  border-radius: 20px;
+  padding: 0.25rem 0.9rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: rgba(201,162,39,0.6);
+  letter-spacing: 0.15em;
+  z-index: 100;
+  cursor: default;
+  user-select: all;
+}

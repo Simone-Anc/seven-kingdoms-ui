@@ -1,0 +1,165 @@
+.player-panel {
+  width: 260px;
+  flex-shrink: 0;
+  background: #0f0904;
+  border-right: 1px solid rgba(201,162,39,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+.turn-info {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(201,162,39,0.15);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.turn-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(201,162,39,0.5);
+  text-transform: uppercase;
+}
+
+.turn-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #c9a227;
+  font-weight: 700;
+}
+
+.phase-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  margin-left: auto;
+  font-style: italic;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  gap: 0.5rem;
+}
+
+.player-card {
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3px;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255,255,255,0.02);
+  transition: all 0.2s;
+}
+
+.player-card.active {
+  border-color: var(--player-color);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.player-color-bar {
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.player-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: #e8d9b0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-badges {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0 0.3rem;
+  border-radius: 2px;
+}
+
+.badge.crown { color: #c9a227; }
+.badge.done  { color: #2ecc71; }
+
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
+  border-radius: 2px;
+  padding: 0.3rem 0.2rem;
+}
+
+.stat.highlight .stat-value {
+  color: #c9a227;
+}
+
+.stat-value {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: #e8d9b0;
+  font-weight: 600;
+}
+
+.stat-label {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Event log */
+.event-log {
+  margin-top: auto;
+  border-top: 1px solid rgba(201,162,39,0.15);
+  padding: 0.8rem;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.log-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: rgba(201,162,39,0.4);
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.log-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.log-entry {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  line-height: 1.3;
+  border-left: 2px solid rgba(201,162,39,0.2);
+  padding-left: 0.5rem;
+}
