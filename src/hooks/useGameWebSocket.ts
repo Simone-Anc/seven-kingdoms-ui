@@ -3,7 +3,10 @@ import { Client, IMessage } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { GameState } from '../types/game';
 
-const WS_URL = 'http://localhost:8080/ws';
+// SockJS richiede http/https, non ws/wss
+const WS_URL = (process.env.REACT_APP_WS_URL || 'http://localhost:8080/ws')
+  .replace('wss://', 'https://')
+  .replace('ws://', 'http://');
 
 export function useGameWebSocket(
   gameId: string | null,
