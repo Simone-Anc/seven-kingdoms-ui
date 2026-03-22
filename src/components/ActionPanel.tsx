@@ -126,7 +126,7 @@ export const ActionPanel: React.FC<Props> = ({
       )}
 
       {/* ── Selezione personaggio ── */}
-      {!isActionInProgress && !isPassiveWaiting && phase === 'PLAYER_ACTIONS' && isMyTurn && (
+      {!isActionInProgress && !isPassiveWaiting && phase === 'PLAYER_ACTIONS' && (
         <div className="characters-list">
           <h3 className="section-title">Scegli un Personaggio</h3>
           {CHAR_CONFIG.map(char => {
