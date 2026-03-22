@@ -53,6 +53,12 @@ function App() {
   const [myPlayerId, setMyPlayerId] = useState<string | null>(null);
   const sounds = useSounds();
 
+  // ── Controllo turno multiplayer ───────────────────────────────────────────
+  // Se myPlayerId è null (partita solo con bot) è sempre il mio turno
+  const isMyTurn = !myPlayerId || !gameState
+    ? true
+    : gameState.players[gameState.currentPlayerIndex]?.id === myPlayerId;
+
   const showError = (msg: string) => {
     setError(msg);
     setTimeout(() => setError(null), 3500);
@@ -508,6 +514,7 @@ function App() {
         gameState={gameState}
         actionStep={actionStep}
         passiveStep={passiveStep}
+        isMyTurn={isMyTurn}
         onSelectCharacter={handleSelectCharacter}
         onChangePlacementColor={handleChangePlacementColor}
         onRemovePlacement={handleRemovePlacement}

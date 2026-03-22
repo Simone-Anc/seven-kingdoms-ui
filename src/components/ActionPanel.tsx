@@ -53,12 +53,13 @@ interface Props {
   onPassivePhase: () => void;
   onEndTurn: () => void;
   onPlayClick?: () => void;
+  isMyTurn?: boolean;
 }
 
 export const ActionPanel: React.FC<Props> = ({
   gameState, actionStep, passiveStep,
   onSelectCharacter, onChangePlacementColor, onRemovePlacement,
-  onConfirmRe, onSkipCathedral, onResetSpiaSwap, onConfirmEsercito, onCancelAction, onPlayClick,
+  onConfirmRe, onSkipCathedral, onResetSpiaSwap, onConfirmEsercito, onCancelAction, onPlayClick, isMyTurn = true,
   onPassivePhase, onEndTurn,
 }) => {
   const currentPlayer = gameState.players[gameState.currentPlayerIndex];
@@ -125,7 +126,7 @@ export const ActionPanel: React.FC<Props> = ({
       )}
 
       {/* ── Selezione personaggio ── */}
-      {!isActionInProgress && !isPassiveWaiting && phase === 'PLAYER_ACTIONS' && (
+      {!isActionInProgress && !isPassiveWaiting && phase === 'PLAYER_ACTIONS' && isMyTurn && (
         <div className="characters-list">
           <h3 className="section-title">Scegli un Personaggio</h3>
           {CHAR_CONFIG.map(char => {
@@ -165,6 +166,12 @@ export const ActionPanel: React.FC<Props> = ({
           <button className="phase-btn passive-btn" onClick={onPassivePhase}>▶ Risolvi Fase Passiva</button>
         </div>
       )}
+      {!isMyTurn && (phase === 'PLAYER_ACTIONS' || phase === 'SETUP') && (
+        <div className="not-my-turn-msg">
+          ⏳ Aspetta il tuo turno...
+        </div>
+      )}
+
       {!isActionInProgress && !isPassiveWaiting && phase === 'END_TURN' && (
         <button className="phase-btn end-btn" onClick={onEndTurn}>⏭ Fine Turno</button>
       )}
