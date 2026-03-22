@@ -467,6 +467,7 @@ function App() {
   // ── Render ────────────────────────────────────────────────────────────────
 
   if (!gameState) {
+    if (!user) return <AuthScreen />;
     return (
       <>
         {error && <div className="error-toast">{error}</div>}
