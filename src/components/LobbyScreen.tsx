@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GameState, LobbyEntry } from '../types/game';
 import { gameApi } from '../api/gameApi';
+import { useAuth } from '../context/AuthContext';
+import { ProfileScreen } from './ProfileScreen';
 import './LobbyScreen.css';
 
 interface Props {
@@ -12,6 +14,8 @@ const COLOR_LABELS: Record<string, string> = { red:'Rosso', blue:'Blu', green:'V
 const COLOR_HEX: Record<string, string> = { red:'#e74c3c', blue:'#3498db', green:'#2ecc71', yellow:'#f1c40f' };
 
 export const LobbyScreen: React.FC<Props> = ({ onGameReady }) => {
+  const { user, logout } = useAuth();
+  const [showProfile, setShowProfile] = useState(false);
   const [mode, setMode] = useState<'menu'|'create'|'join'|'join-code'>('menu');
   const [playerCount, setPlayerCount] = useState(2);
   const [names, setNames] = useState(['','','','']);
@@ -84,9 +88,19 @@ export const LobbyScreen: React.FC<Props> = ({ onGameReady }) => {
   return (
     <div className="lobby-screen">
       <div className="lobby-card">
+        {user && (
+          <div className="lobby-user-bar">
+            <button className="lobby-user-btn" onClick={() => setShowProfile(true)}>
+              👑 {user.nickname}
+            </button>
+            <button className="lobby-logout-btn" onClick={logout}>
+              Esci
+            </button>
+          </div>
+        )}
+        {showProfile && <ProfileScreen onClose={() => setShowProfile(false)} />}
         <div className="lobby-title-block">
           <h1 className="lobby-title">SEVEN KINGDOMS</h1>
-          <p className="lobby-subtitle">Un gioco di Stefano &amp; Simone Ancillai</p>
         </div>
 
         {/* ── Menu principale ── */}

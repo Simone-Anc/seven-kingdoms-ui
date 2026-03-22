@@ -1,6 +1,6 @@
 .lobby-screen {
   min-height: 100vh;
-  background: radial-gradient(ellipse at center, #1a0e05 0%, #0a0603 100%);
+  background: url('../../public/bg.jpg') center center / cover no-repeat, radial-gradient(ellipse at center, #1a0e05 0%, #0a0603 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -337,3 +337,43 @@
 }
 
 .lobby-btn.small { width: auto; padding: 0.4rem 0.8rem; font-size: 0.72rem; }
+
+/* User bar */
+.lobby-user-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(201,162,39,0.12);
+}
+
+.lobby-user-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: rgba(201,162,39,0.7);
+  cursor: pointer;
+  transition: color 0.2s;
+  letter-spacing: 0.05em;
+}
+.lobby-user-btn:hover { color: #c9a227; }
+
+.lobby-logout-btn {
+  background: transparent;
+  border: 1px solid rgba(231,76,60,0.25);
+  border-radius: 3px;
+  padding: 0.2rem 0.6rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: rgba(231,76,60,0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.08em;
+}
+.lobby-logout-btn:hover {
+  background: rgba(231,76,60,0.1);
+  color: #e74c3c;
+  border-color: rgba(231,76,60,0.5);
+}

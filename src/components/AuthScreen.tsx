@@ -28,7 +28,6 @@ export const AuthScreen: React.FC = () => {
       <div className="auth-card">
         <div className="auth-title-block">
           <h1 className="auth-title">SEVEN KINGDOMS</h1>
-          <p className="auth-subtitle">Un gioco di Stefano &amp; Simone Ancillai</p>
         </div>
 
         <div className="auth-tabs">

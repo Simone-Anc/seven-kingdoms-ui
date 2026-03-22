@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #0d0703;
+    background: url('../../public/bg.jpg') center center / cover no-repeat, #0d0703;
   }
   
   .auth-card {
