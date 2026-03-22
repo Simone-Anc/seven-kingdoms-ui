@@ -54,10 +54,16 @@ function App() {
   const sounds = useSounds();
 
   // ── Controllo turno multiplayer ───────────────────────────────────────────
-  // Se myPlayerId è null (partita solo con bot) è sempre il mio turno
+  // Blocca le azioni solo se il giocatore corrente è un ALTRO umano
+  // (non io, non un bot)
   const isMyTurn = !myPlayerId || !gameState
     ? true
-    : gameState.players[gameState.currentPlayerIndex]?.id === myPlayerId;
+    : (() => {
+        const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+        const isMe = currentPlayer?.id === myPlayerId;
+        const isBot = currentPlayer?.bot === true;
+        return isMe || isBot; // posso agire se sono io O se è un bot
+      })();
 
   const showError = (msg: string) => {
     setError(msg);
