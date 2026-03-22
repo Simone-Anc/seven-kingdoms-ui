@@ -115,3 +115,12 @@ export const PROVINCE_CENTERS: Record<number, { x: number; y: number }> = {
   5: { x: 660, y: 900 },  // Dunholt
   6: { x: 210, y: 1080 }, // Riverfen
 };
+
+export interface LobbyEntry {
+  gameId: string;
+  creatorName: string;
+  totalSlots: number;
+  takenSlots: number;
+  missingPlayers: number;
+  playerNames: string[];
+}

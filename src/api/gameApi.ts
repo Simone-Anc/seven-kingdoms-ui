@@ -1,8 +1,46 @@
 import axios from 'axios';
-import { GameState, CreateGameRequest, ActionType } from '../types/game';
+import { GameState, LobbyEntry, CreateGameRequest, ActionType } from '../types/game';
 
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
 const api = axios.create({ baseURL: BASE_URL });
+
+// Aggiunge il token JWT a ogni richiesta se presente
+api.interceptors.request.use(config => {
+  const token = localStorage.getItem('sk_token');
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+// ── Auth API ──────────────────────────────────────────────────────────────
+
+export interface UserProfile {
+  id: string;
+  nickname: string;
+  gamesPlayed: number;
+  gamesWon: number;
+  totalScore: number;
+  createdAt: string;
+}
+
+export interface AuthResponse {
+  token: string;
+  profile: UserProfile;
+}
+
+export const authApi = {
+  register: async (nickname: string, password: string): Promise<AuthResponse> => {
+    const { data } = await api.post('/auth/register', { nickname, password });
+    return data;
+  },
+  login: async (nickname: string, password: string): Promise<AuthResponse> => {
+    const { data } = await api.post('/auth/login', { nickname, password });
+    return data;
+  },
+  me: async (): Promise<UserProfile> => {
+    const { data } = await api.get('/auth/me');
+    return data;
+  },
+};
 
 export interface CubePlacement {
   provinceId: number;
@@ -119,6 +157,12 @@ export const gameApi = {
     const { data } = await api.post(`/games/${gameId}/actions/esercito`, {
       playerId, armyType, actionType, moveToProvinceId, declareBattle
     });
+    return data;
+  },
+
+  // ── Lobby ────────────────────────────────────────────────────────────────
+  getLobby: async (): Promise<LobbyEntry[]> => {
+    const { data } = await api.get('/games/lobby');
     return data;
   },
 
